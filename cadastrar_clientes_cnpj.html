@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<h3>Cadastro de clientes CNPJ</h3>
+
+<div>
+  <form action="/action_page.php">
+    <label for="fname">Razão social</label>
+    <input type="text" id="nome" name="razao_social" placeholder="Insira a razão social aqui" required>
+    
+    <label for="cnpj">CNPJ</label>
+    <input type="text" id="cnpj" name="cnpj" placeholder="66666666666666" required><br>
+    
+    <label for="telefone">Número de Telefone:</label><br>
+    <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required><br>
+    
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro" required>
+    
+    <label for="cep">CEP:</label>
+    <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+  
+    <input type="submit" value="Enviar">
+  </form>
+</div>
+
+</body>
+</html>

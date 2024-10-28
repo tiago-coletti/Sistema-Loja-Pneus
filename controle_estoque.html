@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Controle de Estoque</h1>
+        
+        <div class="form-section">
+            <h2>Adicionar Produto</h2>
+            <input type="text" id="tipo de produto" placeholder="Nome do Produto">
+            <input type="text" id="medida/tamanho" placeholder="Descrição">
+            <input type="text" id="preco" placeholder="Prateleira">
+            <input type="text" id="marca" placeholder="Coluna">
+            <input type="number" id="codigo do produto" placeholder="Quantidade">
+            <input type="date" id="modelo" placeholder="Data de Cadastro">
+            <button onclick="adicionarProduto()">Adicionar Produto</button>
+        </div>
+
+        <div class="search-section">
+            <h2>Buscar Produto</h2>
+            <input type="text" id="nomeBusca" placeholder="Nome do Produto">
+            <button onclick="buscarProduto()">Buscar</button>
+            <div id="resultadoBusca"></div>
+        </div>
+
+        <div class="list-section">
+            <h2>Lista de Produtos</h2>
+            <button onclick="listarProdutos()">Mostrar Produtos</button>
+            <div id="listaProdutos"></div>
+        </div>
+    </div>
+    <div class="form-section">
+            <h2>Registro de Compras</h2>
+            <span>Tipo do Produto: </span>
+            <input type="text" id="tipo de produto" placeholder="Óleo"><br>
+             <span>Marca: </span>
+            <input type="text" id="marca" placeholder="Goodyear"><br>
+            <span>Forma de Pagamento: </span>
+            <input type="text" id="pagamento" placeholder="Cartão elo"><br>
+            <span>Quantidade do produto</span>
+            <input type="text" id="quantidade" placeholder="5"><br>
+            <span>Número da Nota Fiscal</span>
+            <input type="text" id="nota fiscal" placeholder=""><br>
+            <span>Data de Emissão: </span>
+            <input type="date" id="emissão" placeholder=""><br>
+            <span>Preço Unitário: </span>
+            <input type="text" id="preço" placeholder="$"><br>
+            <span>Valor Total: </span>
+            <input type="text" id="valor" placeholder="$"><br>
+            <button onclick="adicionarCompra()">Registrar Compra</button>
+        </div>
+
+    
+    <div class="form-section">
+            <h2>Relatório de Estoque</h2>
+            <span>Tipo do Produto: </span>
+            <input type="text" id="tipo de produto" placeholder=""><br>
+             <span>Quantidade em Estoque: </span>
+            <input type="text" id="marca" placeholder=""><br>   
+            <button onclick="adicionarCompra()">Registrar Compra</button>
+        </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
