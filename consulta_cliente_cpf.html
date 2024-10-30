@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+button {
+  cursor: pointer;
+}
+</style>
+<script>
+function confirmarExclusao() {
+  alert("Cliente excluído com sucesso!");
+}
+</script>
+</head>
+<body>
+
+<h2>Consulta de clientes CPF</h2>
+
+<table>
+  <tr>
+    <th>Nome Completo</th>
+    <th>CPF</th>
+    <th>Email</th>
+    <th>Editar</th>
+    <th>Excluir</th>
+  </tr>
+  <tr>
+    <td>Luiz Felipe Vilanni</td>
+    <td>666.666.66-66</td>
+    <td>luiz.felipe@gmail.com</td>
+    <td><a href="alteracao_cliente_cpf.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  <tr>
+    <td>Lucas Fernandes Lopes Nuncio</td>
+    <td>666.666.66-66</td>
+    <td>lucas.fernandes@gmail.com</td>
+    <td><a href="alteracao_cliente_cpf.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  <tr>
+    <td>João Gabriel Siqueira</td>
+    <td>666.666.66-66</td>
+    <td>joao.gabriel@gmail.com</td>
+    <td><a href="alteracao_cliente_cpf.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  <tr>
+    <td>Vinícius Knaak</td>
+    <td>666.666.66-66</td>
+    <td>vinicius.1234@gmail.com</td>
+    <td><a href="alteracao_cliente_cpf.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  
+</table>
+
+</body>
+</html>
