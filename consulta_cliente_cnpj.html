@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+button {
+  cursor: pointer;
+}
+</style>
+<script>
+function confirmarExclusao() {
+  alert("Cliente excluído com sucesso!");
+}
+</script>
+</head>
+<body>
+
+<h2>Consulta de clientes CNPJ</h2>
+
+<table>
+  <tr>
+    <th>Razão Social</th>
+    <th>CNPJ</th>
+    <th>Telefone</th>
+    <th>Editar</th>
+    <th>Excluir</th>
+  </tr>
+  <tr>
+    <td>Maria Luiza Bolos</td>
+    <td>12.345.678/0001-00</td>
+    <td>MariaLuiza.bolos@gmail.com</td>
+    <td><a href="alteracao_cliente_cnpj.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  <tr>
+    <td>Lipe Computadores</td>
+    <td>12.345.678/0001-00</td>
+    <td>lipe.computadores@gmail.com</td>
+    <td><a href="alteracao_cliente_cnpj.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  <tr>
+    <td>Larissa Nail Designer</td>
+    <td>12.345.678/0001-00</td>
+    <td>larissa.nail@gmail.com</td>
+    <td><a href="alteracao_cliente_cnpj.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  <tr>
+    <td>João Cláudio Borracharia</td>
+    <td>12.345.678/0001-00</td>
+    <td>joao.Borracharia@gmail.com</td>
+    <td><a href="alteracao_cliente_cnpj.html"><button>Editar</button></a></td>
+    <td><button onclick="confirmarExclusao()">Excluir</button></td>
+  </tr>
+  
+</table>
+
+</body>
+</html>
