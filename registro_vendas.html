@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<h2>Cadastro de Vendas</h2>
+
+<div>
+  <form action="/action_page.php">
+    <label for="fname">Tipo do produto</label>
+    <input type="text" id="tipo" name="tipo" required>
+
+    <label for="fname">Marca:</label>
+    <input type="text" id="marca" name="marca" required>
+
+    <label for="fname">Modelo:</label>
+    <input type="text" id="modelo" name="modelo" required>
+
+    <label for="cpf">Unidades:</label>
+    <input type="text" id="un" name="un" required><br>
+    
+    <label for="cpf">Número da nota fiscal:</label>
+    <input type="text" id="nota" name="nota" required><br>
+    
+    
+    <label for="telefone">Preço unitário:</label><br>
+    <input type="text" id="preco" name="preco" required><br>
+    
+    <label for="endereco">Valor total da compra:</label>
+    <input type="text" id="total" name="total" required>
+    
+    <input type="submit" value="Salvar">
+  </form>
+  
+  <!-- Botão Consultar -->
+  <a href="consulta_vendas.html">
+    <button>Vizualizar histórico de vendas</button>
+  </a>
+</div>
+
+</body>
+</html>
