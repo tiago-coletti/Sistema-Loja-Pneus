@@ -9,34 +9,41 @@
 
 <div>
   <form action="/action_page.php">
-    <label for="fname">Tipo do produto</label>
+    <label for="tipo">Tipo do produto</label>
     <input type="text" id="tipo" name="tipo" required>
 
-    <label for="fname">Marca:</label>
+    <label for="marca">Marca:</label>
     <input type="text" id="marca" name="marca" required>
 
-    <label for="fname">Modelo:</label>
+    <label for="modelo">Modelo:</label>
     <input type="text" id="modelo" name="modelo" required>
 
-    <label for="cpf">Unidades:</label>
+    <label for="un">Unidades:</label>
     <input type="text" id="un" name="un" required><br>
     
-    <label for="cpf">Número da nota fiscal:</label>
+    <label for="nota">Número da nota fiscal:</label>
     <input type="text" id="nota" name="nota" required><br>
     
-    
-    <label for="telefone">Preço unitário:</label><br>
+    <!-- Forma de pagamento -->
+    <label for="pagamento">Forma de pagamento:</label>
+    <input type="text" id="pagamento" name="pagamento" required><br>
+
+    <label for="preco">Preço unitário:</label><br>
     <input type="text" id="preco" name="preco" required><br>
     
-    <label for="endereco">Valor total da compra:</label>
-    <input type="text" id="total" name="total" required>
+    <label for="total">Valor total da compra:</label>
+    <input type="text" id="total" name="total" required><br>
+    
+    <!-- Data de venda -->
+    <label for="data">Data de venda:</label>
+    <input type="text" id="data" name="data" placeholder="DD/MM/AAAA" required><br>
     
     <input type="submit" value="Salvar">
   </form>
   
   <!-- Botão Consultar -->
   <a href="consulta_vendas.html">
-    <button>Vizualizar histórico de vendas</button>
+    <button>Visualizar histórico de vendas</button>
   </a>
 </div>
 
