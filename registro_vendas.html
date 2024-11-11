@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Vendas</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -8,7 +11,7 @@
 <h2>Cadastro de Vendas</h2>
 
 <div>
-  <form action="/action_page.php">
+  <form id="formCadastro">
     <label for="tipo">Tipo do produto</label>
     <input type="text" id="tipo" name="tipo" required>
 
@@ -46,6 +49,38 @@
     <button>Visualizar histórico de vendas</button>
   </a>
 </div>
+
+<script>
+  document.getElementById('formCadastro').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+    const tipo = document.getElementById('tipo').value;
+    const marca = document.getElementById('marca').value;
+    const modelo = document.getElementById('modelo').value;
+    const un = document.getElementById('un').value;
+    const nota = document.getElementById('nota').value;
+    const pagamento = document.getElementById('pagamento').value;
+    const preco = document.getElementById('preco').value;
+    const total = document.getElementById('total').value;
+    const data = document.getElementById('data').value;
+
+    if (tipo && marca && modelo && un && nota && pagamento && preco && total && data) {
+        alert("Cadastro realizado com sucesso!");
+
+        document.getElementById('tipo').value = '';
+        document.getElementById('marca').value = '';
+        document.getElementById('modelo').value = '';
+        document.getElementById('un').value = '';
+        document.getElementById('nota').value = '';
+        document.getElementById('pagamento').value = '';
+        document.getElementById('preco').value = '';
+        document.getElementById('total').value = '';
+        document.getElementById('data').value = '';
+    } else {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+    }
+  });
+</script>
 
 </body>
 </html>
