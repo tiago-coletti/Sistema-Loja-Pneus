@@ -7,24 +7,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-
-    <div>
+    <div class="container">
         <h1>Controle de Estoque</h1>
         
-        <div class="produtoss">
+        <div class="form-section">
             <h2>Adicionar Produto</h2>
-            <input type="text" id="tipo de produto" placeholder="Nome do Produto">
-            <input type="text" id="medida/tamanho" placeholder="Descrição">
-            <input type="text" id="preco" placeholder="Prateleira">
-            <input type="text" id="marca" placeholder="Coluna">
-            <input type="number" id="codigo do produto" placeholder="Quantidade">
-            <input type="date" id="modelo" placeholder="Data de Cadastro">
+            <label for="tipoProduto">Nome do Produto</label>
+            <input type="text" id="tipoProduto" placeholder="Nome do Produto">
+
+            <label for="descricao">Descrição</label>
+            <input type="text" id="descricao" placeholder="Descrição">
+
+            <label for="prateleira">Prateleira</label>
+            <input type="text" id="prateleira" placeholder="Prateleira">
+
+            <label for="coluna">Coluna</label>
+            <input type="text" id="coluna" placeholder="Coluna">
+
+            <label for="quantidade">Quantidade</label>
+            <input type="number" id="quantidade" placeholder="Quantidade">
+
+            <label for="dataCadastro">Data de Cadastro</label>
+            <input type="date" id="dataCadastro" placeholder="Data de Cadastro">
+
+            <label for="valor">Valor</label>
+            <input type="text" id="valor" placeholder="R$ 666,66">
+
             <button onclick="adicionarProduto()">Adicionar Produto</button>
         </div>
 
         <div class="search-section">
             <h2>Buscar Produto</h2>
+            <label for="nomeBusca">Nome do Produto</label>
             <input type="text" id="nomeBusca" placeholder="Nome do Produto">
             <button onclick="buscarProduto()">Buscar</button>
             <div id="resultadoBusca"></div>
@@ -33,25 +47,24 @@
         <div class="list-section">
             <h2>Lista de Produtos</h2>
             <button onclick="listarProdutos()">Mostrar Produtos</button>
-            <div id="listaProdutos"> <br>
-                
-                
-            </div>
-            
-            
+            <div id="listaProdutos"></div>
+        </div>
+
+        <div class="form-section">
+            <h2>Atualizar Estoque</h2>
+            <label for="nomeProduto">Nome do Produto:</label>
+            <input type="text" id="nomeProduto" placeholder="Nome do Produto">
+
+            <label for="tipoProdutoAtualizar">Tipo do Produto:</label>
+            <input type="text" id="tipoProdutoAtualizar" placeholder="Tipo do Produto">
+
+            <label for="quantidadeEstoque">Quantidade em Estoque:</label>
+            <input type="text" id="quantidadeEstoque" placeholder="Quantidade">
+
+            <button onclick="adicionarCompra()">Registrar Compra</button>
         </div>
     </div>
-     
-    <div class="form-section">
-    <label for="tipoProduto">Nome do Produto:</label>
-    <input type="text" id="tipoProduto" placeholder="Óleo SAE 20"><br>
-    <label for="tipoDeProduto">Tipo do Produto:</label>
-    <input type="text" id="tipoDeProduto" placeholder="Óleo"><br>
-    <label for="quantidadeEstoque">Quantidade em Estoque:</label>
-    <input type="text" id="quantidadeEstoque" placeholder="15"><br>
-    
-    <button onclick="adicionarCompra()">Atualizar Estoque</button>
-</div>
+
     <script src="scripts/gerenciamento_produtos.js"></script>
 </body>
 </html>
