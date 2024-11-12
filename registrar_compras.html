@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="form-section">
+    <h2>Registro de Compras</h2>
+    <label for="tipoProduto">Tipo do Produto:</label>
+    <input type="text" id="tipoProduto" placeholder="Óleo"><br>
+
+    <label for="marca">Marca:</label>
+    <input type="text" id="marca" placeholder="Goodyear"><br>
+
+    <label for="pagamento">Forma de Pagamento:</label>
+    <input type="text" id="pagamento" placeholder="Cartão Elo"><br>
+
+     <label for="quantidade">Quantidade do Produto:</label>
+    <input type="text" id="quantidade" placeholder="5"><br>
+
+     <label for="notaFiscal">Número da Nota Fiscal:</label>
+    <input type="text" id="notaFiscal" placeholder="0000000001385-AA."><br>
+
+    <label for="emissao">Data de Emissão:</label>
+    <input type="date" id="emissao" placeholder=""><br>
+
+    <label for="precoUnitario">Preço Unitário:</label>
+    <input type="text" id="precoUnitario" placeholder="$"><br>
+
+     <label for="valorTotal">Valor Total:</label>
+    <input type="text" id="valorTotal" placeholder="$"><br>
+
+   
+    <button onclick="adicionarCompra()">Registrar Compra</button>
+</div>
+   <script src="scripts/gerenciamento_produtos.js"></script>
+</body>
+</html>
