@@ -33,32 +33,41 @@
     <label for="preco">Preço unitário:</label><br>
     <input type="text" id="preco" name="preco" required><br>
     
-    
     <label for="data">Data de venda:</label>
-    <input type="text" id="data" name="data" placeholder="DD/MM/AAAA" required><br>
+    <input type="date" id="data" name="data" placeholder="DD/MM/AAAA" required><br>
     
-    <button type="button" onclick="adicionarProduto()">Adicionar Produto</button><br>
-    
-    
+    <button type="button" id="adicionarProdutoBtn" onclick="adicionarProduto()" disabled>Adicionar Produto</button><br>
   </form>
-  <a href="botao_registrar_vendas.html">
-    <button>Registrar Venda</button><br> </a>
   
+  <a href="botao_registrar_vendas.html">
+    <button id="registrarVendaBtn" disabled>Registrar Venda</button><br>
+  </a>
 </div>
 
 <script>
+  // Função para verificar se todos os campos estão preenchidos
+  function verificarCampos() {
+    const campos = document.querySelectorAll('#formCadastro input[required]');
+    const adicionarProdutoBtn = document.getElementById('adicionarProdutoBtn');
+    const registrarVendaBtn = document.getElementById('registrarVendaBtn');
+    
+    // Habilitar botões somente se todos os campos estiverem preenchidos
+    const todosPreenchidos = Array.from(campos).every(campo => campo.value.trim() !== '');
+    adicionarProdutoBtn.disabled = !todosPreenchidos;
+    registrarVendaBtn.disabled = !todosPreenchidos;
+  }
+
   // Função para limpar os campos do formulário
   function adicionarProduto() {
-    document.getElementById('tipo').value = '';
-    document.getElementById('marca').value = '';
-    document.getElementById('modelo').value = '';
-    document.getElementById('un').value = '';
-    document.getElementById('nota').value = '';
-    document.getElementById('pagamento').value = '';
-    document.getElementById('preco').value = '';
-    document.getElementById('data').value = '';
+    alert("Produto adicionado! Continue sua compra.");
+    document.getElementById('formCadastro').reset();
+    verificarCampos(); // Atualiza a verificação dos campos
   }
-  
+
+  // Adiciona o evento de escuta em cada campo para verificar quando todos estão preenchidos
+  document.querySelectorAll('#formCadastro input[required]').forEach(input => {
+    input.addEventListener('input', verificarCampos);
+  });
 </script>
 
 </body>
