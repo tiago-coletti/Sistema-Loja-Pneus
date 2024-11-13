@@ -49,7 +49,20 @@
             <button onclick="listarProdutos()">Mostrar Produtos</button>
             <div id="listaProdutos"></div>
         </div>
+    <div class="form-section">
+            <h2>Atualizar Estoque</h2>
+            <label for="nomeProduto">Nome do Produto:</label>
+            <input type="text" id="nomeProduto" placeholder="Nome do Produto">
 
+            <label for="tipoProdutoAtualizar">Tipo do Produto:</label>
+            <input type="text" id="tipoProdutoAtualizar" placeholder="Tipo do Produto">
+
+            <label for="quantidadeEstoque">Quantidade em Estoque:</label>
+            <input type="text" id="quantidadeEstoque" placeholder="Quantidade">
+
+            <button onclick="adicionarCompra()">Registrar Compra</button>
+        </div>
+    </div>
         
 
     <script src="scripts/gerenciamento_produtos.js"></script>
