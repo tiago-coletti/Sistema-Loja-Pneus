@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body> 
+  <h2>Para finalizar, insira o valor Total</h2>
+  <label for="total">Valor total da compra:</label>
+    <input type="text" id="total" name="total" required><br>
+    <button onclick="salvar()">Registrar venda</button> <br>
+    
+    <a href="consulta_vendas.html">
+      <button>Visualizar histórico de vendas</button><br>
+    </a>
+  
+</body>
+
+<script>
+  function salvar(){
+    document.getElementById('total').value = '';
+    alert("Venda registrada!");
+  }
+
+</script>
+
+</html>
