@@ -12,7 +12,7 @@
 
 <div>
   <form id="formCadastro">
-    <label for="tipo">Tipo do produto</label>
+    <label for="tipo">Tipo do produto:</label>
     <input type="text" id="tipo" name="tipo" required>
 
     <label for="marca">Marca:</label>
@@ -27,59 +27,38 @@
     <label for="nota">Número da nota fiscal:</label>
     <input type="text" id="nota" name="nota" required><br>
     
-    <!-- Forma de pagamento -->
     <label for="pagamento">Forma de pagamento:</label>
     <input type="text" id="pagamento" name="pagamento" required><br>
 
     <label for="preco">Preço unitário:</label><br>
     <input type="text" id="preco" name="preco" required><br>
     
-    <label for="total">Valor total da compra:</label>
-    <input type="text" id="total" name="total" required><br>
     
-    <!-- Data de venda -->
     <label for="data">Data de venda:</label>
     <input type="text" id="data" name="data" placeholder="DD/MM/AAAA" required><br>
     
-    <input type="submit" value="Salvar">
+    <button type="button" onclick="adicionarProduto()">Adicionar Produto</button><br>
+    
+    
   </form>
+  <a href="botao_registrar_vendas.html">
+    <button>Registrar Venda</button><br> </a>
   
-  <!-- Botão Consultar -->
-  <a href="consulta_vendas.html">
-    <button>Visualizar histórico de vendas</button>
-  </a>
 </div>
 
 <script>
-  document.getElementById('formCadastro').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    
-    const tipo = document.getElementById('tipo').value;
-    const marca = document.getElementById('marca').value;
-    const modelo = document.getElementById('modelo').value;
-    const un = document.getElementById('un').value;
-    const nota = document.getElementById('nota').value;
-    const pagamento = document.getElementById('pagamento').value;
-    const preco = document.getElementById('preco').value;
-    const total = document.getElementById('total').value;
-    const data = document.getElementById('data').value;
-
-    if (tipo && marca && modelo && un && nota && pagamento && preco && total && data) {
-        alert("Cadastro realizado com sucesso!");
-
-        document.getElementById('tipo').value = '';
-        document.getElementById('marca').value = '';
-        document.getElementById('modelo').value = '';
-        document.getElementById('un').value = '';
-        document.getElementById('nota').value = '';
-        document.getElementById('pagamento').value = '';
-        document.getElementById('preco').value = '';
-        document.getElementById('total').value = '';
-        document.getElementById('data').value = '';
-    } else {
-        alert("Por favor, preencha todos os campos obrigatórios.");
-    }
-  });
+  // Função para limpar os campos do formulário
+  function adicionarProduto() {
+    document.getElementById('tipo').value = '';
+    document.getElementById('marca').value = '';
+    document.getElementById('modelo').value = '';
+    document.getElementById('un').value = '';
+    document.getElementById('nota').value = '';
+    document.getElementById('pagamento').value = '';
+    document.getElementById('preco').value = '';
+    document.getElementById('data').value = '';
+  }
+  
 </script>
 
 </body>
