@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Login</title>
-</head>
-<body>
-    <div class="login-box">
-        <div class="login-header">
-            <header>Login</header>
-        </div>
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Email" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Senha" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <select id="role" name="role" class="input-field">
-                <option value="proprietario">Proprietário</option>
-                <option value="equipe">Equipe</option>
-            </select>
-        </div>
-
-        <div class="input-submit">
-            <button class="submit-btn" id="submit"></button>
-            <label for="submit">Entrar</label>
-        </div>
-    </div>
-</body>
+<html lang="pt-BR" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Painel de Login - PneuControl</title>
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="login-form">
+         <div class="text">
+            LOGIN
+         </div>
+         <form>
+            <div class="field">
+               <div class="fas fa-user"></div>
+               <input type="text" placeholder="Login">
+            </div>
+            <div class="field">
+               <div class="fas fa-lock"></div>
+               <input type="password" placeholder="Senha">
+            </div>
+            <div class="field">
+               <div class="fas fa-user-tag"></div>
+               <select>
+                  <option value="">Usuário</option>
+                  <option value="proprietario">Proprietário</option>
+                  <option value="funcionario">Funcionário</option>
+               </select>
+            </div>
+            <button type="button" onclick="window.location.href='dashboard.html'">ENTRAR</button>
+         </form>
+      </div>
+   </body>
 </html>
