@@ -2,15 +2,33 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
-<script>
-function confirmarExclusao() {
-  alert("Cliente excluído com sucesso!");
-}
-</script>
+    <script>
+        function confirmarExclusao() {
+            alert("Cliente excluído com sucesso!");
+        }
+
+        // Função vazia para garantir que o botão "Consultar" não faça nada
+        function consultaNaoFuncional() {
+            // Nenhuma ação é realizada aqui
+        }
+    </script>
 </head>
 <body>
 
 <h2>Consulta de clientes CNPJ</h2>
+
+<!-- Filtro de data -->
+<div>
+    <label for="filtroData">Filtrar por Data:</label>
+    <select id="filtroData">
+        <option value="">Selecione um filtro</option>
+        <option value="7dias">Últimos 7 dias</option>
+        <option value="30dias">Últimos 30 dias</option>
+        <option value="mesAtual">Este Mês</option>
+        <option value="anoAtual">Ano Atual</option>
+    </select>
+    <button onclick="consultaNaoFuncional()">Consultar</button>
+</div>
 
 <table>
   <tr>
