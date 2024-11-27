@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Produtos</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* Estilos generales para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo del botón Volver (esquina superior izquierda) */
+        .volver {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 200px;
+            background-color: #A52A2A;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .volver:hover {
+            background-color: #A52A2A;
+        }
+
+        /* Contenedor del formulario */
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #A52A2A;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #A52A2A;
+        }
+
+        .success-message {
+            margin-top: 15px;
+            color: green;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="volver" onclick="volverPagina()">Voltar</button>
+
+    <div class="form-container">
+        <h1>Cadastro de Produtos</h1>
+        <input type="text" id="productType" placeholder="Tipo do Produto" />
+        <input type="number" id="productStock" placeholder="Quantidade de Unidades" />
+        <input type="number" id="productPrice" placeholder="Preço Unitário (R$)" step="0.01" />
+        <button onclick="registrarProducto()">Cadastrar</button>
+        
+        <button class="relatorio" onclick="irAReporte()">Relatório dos Produtos</button>
+
+        <div id="successMessage" class="success-message"></div>
+    </div>
+
+    <script>
+        function registrarProducto() {
+            const tipo = document.getElementById('productType').value.trim();
+            const stock = parseInt(document.getElementById('productStock').value);
+            const precio = parseFloat(document.getElementById('productPrice').value).toFixed(2);
+
+            if (!tipo || isNaN(stock) || isNaN(precio)) {
+                alert("Por favor, complete todos os campos corretamente.");
+                return;
+            }
+
+            const productos = JSON.parse(localStorage.getItem('productos')) || [];
+
+            const productoExistente = productos.find(producto => producto.tipo === tipo);
+
+            if (productoExistente) {
+                productoExistente.stock += stock;
+            } else {
+                const producto = {
+                    tipo,
+                    stock,
+                    precio: parseFloat(precio)
+                };
+                productos.push(producto);
+            }
+
+            localStorage.setItem('productos', JSON.stringify(productos));
+
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = `Produto "${tipo}" registrado com sucesso.`;
+
+            document.getElementById('productType').value = '';
+            document.getElementById('productStock').value = '';
+            document.getElementById('productPrice').value = '';
+
+            console.log("Produtos cadastrados:", productos);
+        }
+
+        function volverPagina() {
+            window.history.back();
+        }
+
+        function irAReporte() {
+            window.location.href = "file:///C:/Users/User/Desktop/relatorioProdutos.html";
+        }
+    </script>
+
+</body>
+</html>
