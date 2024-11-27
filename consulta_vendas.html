@@ -6,11 +6,29 @@
         function confirmarExclusao() {
             alert("Cliente excluído com sucesso!");
         }
+
+        // Função vazia para garantir que o botão "Consultar" não faça nada
+        function consultaNaoFuncional() {
+            // Nenhuma ação será realizada aqui
+        }
     </script>
 </head>
 <body>
 
 <h2>Histórico de vendas</h2>
+
+<!-- Filtro de data -->
+<div>
+    <label for="filtroData">Filtrar por Data:</label>
+    <select id="filtroData">
+        <option value="">Selecione um filtro</option>
+        <option value="7dias">Últimos 7 dias</option>
+        <option value="30dias">Últimos 30 dias</option>
+        <option value="mesAtual">Este Mês</option>
+        <option value="anoAtual">Ano Atual</option>
+    </select>
+    <button onclick="consultaNaoFuncional()">Consultar</button>
+</div>
 
 <table>
   <tr>
@@ -20,8 +38,8 @@
     <th>Unidades</th>
     <th>Preço unitário</th>
     <th>Valor total da compra</th>
-    <th>Data de venda</th> <!-- Nova coluna de Data de venda -->
-    <th>Forma de pagamento</th> <!-- Nova coluna de Forma de pagamento -->
+    <th>Data de venda</th>
+    <th>Forma de pagamento</th>
     <th>Visualizar</th>
   </tr>
   
@@ -32,8 +50,8 @@
     <td>4</td>
     <td>R$ 450,00</td>
     <td>R$ 1.800,00</td>
-    <td>01/11/2024</td> <!-- Data de venda -->
-    <td>Cartão de crédito</td> <!-- Forma de pagamento -->
+    <td>01/11/2024</td>
+    <td>Cartão de crédito</td>
     <td><a href="vizualizar_venda.html"><button>Visualizar</button></a></td>
   </tr>
 
@@ -44,8 +62,8 @@
     <td>4</td>
     <td>R$ 550,00</td>
     <td>R$ 2.200,00</td>
-    <td>02/11/2024</td> <!-- Data de venda -->
-    <td>Boleto bancário</td> <!-- Forma de pagamento -->
+    <td>02/11/2024</td>
+    <td>Boleto bancário</td>
     <td><a href="vizualizar_venda.html"><button>Visualizar</button></a></td>
   </tr>
 
@@ -56,8 +74,8 @@
     <td>4</td>
     <td>R$ 400,00</td>
     <td>R$ 1.600,00</td>
-    <td>03/11/2024</td> <!-- Data de venda -->
-    <td>Pix</td> <!-- Forma de pagamento -->
+    <td>03/11/2024</td>
+    <td>Pix</td>
     <td><a href="vizualizar_venda.html"><button>Visualizar</button></a></td>
   </tr>
 
@@ -68,8 +86,8 @@
     <td>4</td>
     <td>R$ 1.200,00</td>
     <td>R$ 4.800,00</td>
-    <td>04/11/2024</td> <!-- Data de venda -->
-    <td>Dinheiro</td> <!-- Forma de pagamento -->
+    <td>04/11/2024</td>
+    <td>Dinheiro</td>
     <td><a href="vizualizar_venda.html"><button>Visualizar</button></a></td>
   </tr>
   
