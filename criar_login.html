@@ -38,6 +38,27 @@
         <ul id="login-list-items"></ul>
     </div>
 
+    <!-- Formulário de Edição -->
+    <div id="edit-login-container" class="edit-login-container" style="display: none;">
+        <h3>Editar Login</h3>
+        <form id="edit-login-form">
+            <label for="edit-username">Nome de Usuário:</label>
+            <input type="text" id="edit-username" name="edit-username" required>
+
+            <label for="edit-password">Senha:</label>
+            <input type="password" id="edit-password" name="edit-password" required>
+
+            <label for="edit-role">Tipo de Usuário:</label>
+            <select id="edit-role" name="edit-role" required>
+                <option value="proprietario">Proprietário</option>
+                <option value="equipe">Equipe</option>
+            </select>
+
+            <button type="submit">Salvar Alterações</button>
+            <button type="button" id="cancel-edit">Cancelar</button>
+        </form>
+    </div>
+
     <script src="scripts/login.js"></script>
 </body>
 </html>
