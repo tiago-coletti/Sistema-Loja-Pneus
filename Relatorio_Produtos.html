@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+        }
+
+        .volver {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 200px;
+            background-color: #A52A2A;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .volver:hover {
+            background-color: #A52A2A;
+        }
+
+        .sidebar {
+            width: 200px;
+            margin-right: 20px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            margin-top: 60px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .sidebar input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            background-color: #A52A2A;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .sidebar button:hover {
+            background-color: #A52A2A;
+        }
+
+        .container {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #A52A2A;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        tr {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            td {
+                position: relative;
+                padding-left: 50%;
+            }
+
+            td:before {
+                position: absolute;
+                top: 0;
+                left: 10px;
+                width: 45%;
+                font-weight: bold;
+            }
+
+            td:nth-of-type(1):before { content: "Tipo de Producto"; }
+            td:nth-of-type(2):before { content: "Cantidad en Stock"; }
+            td:nth-of-type(3):before { content: "Precio Unitario"; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="volver" onclick="volverPagina()">Voltar</button>
+
+    <div class="sidebar">
+        <h2>Filtrar Produto</h2>
+        <input type="text" id="searchInput" placeholder="Tipo do Produto">
+        <button onclick="filtrarProducto()">Buscar</button>
+    </div>
+
+    <div class="container">
+        <h1>Relatório de Produtos Registrados</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo do Produto</th>
+                    <th>Quantidade em Estoque</th>
+                    <th>Preço Unitário</th>
+                </tr>
+            </thead>
+            <tbody id="productTable">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filtrarProducto() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#productTable tr');
+            
+            rows.forEach(row => {
+                const productType = row.cells[0].textContent.toLowerCase();
+                row.style.display = productType.includes(input) ? '' : 'none';
+            });
+        }
+
+        function volverPagina() {
+            window.history.back();
+        }
+
+        // Cargar los productos desde localStorage
+        window.onload = function() {
+            const productos = JSON.parse(localStorage.getItem('productos')) || [];
+            const tableBody = document.getElementById('productTable');
+
+            productos.forEach(producto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${producto.tipo}</td>
+                    <td>${producto.stock}</td>
+                    <td>R$${producto.precio.toFixed(2)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        };
+    </script>
+
+</body>
+</html>
