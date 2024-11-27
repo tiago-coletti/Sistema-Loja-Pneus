@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro por Ano</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .filter-container select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .items-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .item.hidden {
+            display: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .escolher_cadastro {
+          font-size: 24px;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 30px;  
+        }
+        .botao-cadastro {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #A52A2A;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          margin: 10px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+        
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        
+        input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #A52A2A;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #961f1f;
+        }
+        
+        #listaProdutos, #resultadoBusca {
+            margin-top: 20px;
+        }
+        
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        
+        button {
+          background-color: #961f1f;
+          cursor: pointer;
+        }
+        .nome-usuario {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #333;
+        }
+    </style>
+
+</head>
+  
+<body>
+
+
+    <h1>Relatório de Estoque</h1>
+        
+        <div class="form-section">
+            <h2>Relatório de Estoque</h2>
+            <label for="nomedoProduto">Nome do Produto</label>
+            <input type="text" id="nomedoProduto" placeholder="Óleo">
+
+            <label for="quantidade">Quantidade</label>
+            <input type="text" id="quantidade" placeholder="5 unidades">
+
+            
+
+            <button onclick="adicionarProduto()">Gerar Relatório</button>
+        </div>
+
+
+
+    <h3>Filtro de Relatórios Anuais</h3>
+
+    <div class="filter-container">
+        <label for="year-filter">Escolha o Ano:</label>
+        <select id="year-filter">
+            <option value="all">Todos</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+        </select>
+    </div>
+
+    <div class="items-container">
+        <div class="item" data-year="2020">
+            <h3>Item 1 - 2020</h3>
+            <p>Descrição do item 2020.</p>
+        </div>
+        <div class="item" data-year="2021">
+            <h3>Item 2 - 2021</h3>
+            <p>Descrição do item 2021.</p>
+        </div>
+        <div class="item" data-year="2022">
+            <h3>Item 3 - 2022</h3>
+            <p>Descrição do item 2022.</p>
+        </div>
+        <div class="item" data-year="2023">
+            <h3>Item 4 - 2023</h3>
+            <p>Descrição do item 2023.</p>
+        </div>
+        <div class="item" data-year="2024">
+            <h3>Item 5 - 2024</h3>
+            <p>Descrição do item 2024.</p>
+        </div>
+    </div>
+
+    <script>
+       
+        document.getElementById('year-filter').addEventListener('change', function() {
+            const selectedYear = this.value;
+            const items = document.querySelectorAll('.item');
+
+            items.forEach(function(item) {
+                if (selectedYear === 'all' || item.getAttribute('data-year') === selectedYear) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
