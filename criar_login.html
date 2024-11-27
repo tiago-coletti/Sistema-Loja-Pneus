@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Login - Dashboard</title>
+    <link rel="stylesheet" href="assets/login.css">
+</head>
+<body>
+    <div class="nome-usuario">Tiago Coletti</div>
+    <!-- Botão Voltar -->
+    <a href="dashboard.html" class="voltar-btn">Voltar</a>
+
+    <div class="container">
+        <h2>Criar Login</h2>
+        <form id="create-login-form">
+            <label for="username">Nome de Usuário:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="role">Tipo de Usuário:</label>
+            <select id="role" name="role" required>
+                <option value="proprietario">Proprietário</option>
+                <option value="equipe">Equipe</option>
+            </select>
+
+            <button type="submit">Criar Login</button>
+        </form>
+    </div>
+
+    <!-- Botão Consultar Logins -->
+    <button id="consult-logins" class="consult-logins-btn">Consultar Logins</button>
+
+    <div id="logins-list" class="logins-list" style="display:none;">
+        <h3>Logins Criados:</h3>
+        <ul id="login-list-items"></ul>
+    </div>
+
+    <script src="scripts/login.js"></script>
+</body>
+</html>

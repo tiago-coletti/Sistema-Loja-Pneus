@@ -3,32 +3,31 @@
    <head>
       <meta charset="utf-8">
       <title>Painel de Login - PneuControl</title>
-      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="assets/index.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    </head>
    <body>
+      <div class="nome-usuario">Tiago Coletti</div>
       <div class="login-form">
-         <div class="text">
-            LOGIN
-         </div>
-         <form>
+         <div class="text">LOGIN</div>
+         <form action="dashboard.html" method="get">
             <div class="field">
                <div class="fas fa-user"></div>
-               <input type="text" placeholder="Login">
+               <input type="text" placeholder="Usuário" name="login" required>
             </div>
             <div class="field">
                <div class="fas fa-lock"></div>
-               <input type="password" placeholder="Senha">
+               <input type="password" placeholder="Senha" name="senha" required>
             </div>
             <div class="field">
                <div class="fas fa-user-tag"></div>
-               <select>
-                  <option value="">Usuário</option>
+               <select name="usuario" required>
+                  <option value="">Selecione o Tipo de Usuário</option>
                   <option value="proprietario">Proprietário</option>
                   <option value="funcionario">Funcionário</option>
                </select>
             </div>
-            <button type="button" onclick="window.location.href='dashboard.html'">ENTRAR</button>
+            <button type="submit">ENTRAR</button>
          </form>
       </div>
    </body>

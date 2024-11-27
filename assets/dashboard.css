@@ -346,6 +346,18 @@ nav.close ~ .dashboard .top{
     color: var(--text-color);
 }
 
+/* ===== Meu Nome ===== */
+.nome-usuario {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    color: var(--text-color);
+    z-index: 10;
+}
+
 /* ===== Responsividade ===== */
 @media (max-width: 1000px) {
     nav{

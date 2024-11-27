@@ -68,18 +68,6 @@ input:focus, select:focus{
   background: linear-gradient(#5a2a2a,#3a1f1f);
   animation: glow .8s ease-out infinite alternate;
 }
-@keyframes glow {
-   0%{
-    border-color: #b23636;
-    box-shadow: 0 0 5px rgba(255,0,0,.2),
-                inset 0 0 5px rgba(255,0,0,.1);
-  }
-   100%{
-    border-color: #e06b6b;
-    box-shadow: 0 0 20px rgba(255,0,0,.6),
-                inset 0 0 10px rgba(255,0,0,.4);
-  }
-}
 button{
   margin-top: 30px;
   border-radius: 5px!important;
@@ -94,4 +82,13 @@ button:hover{
               0 0 10px rgba(255,0,0,.2),
               0 0 15px rgba(255,0,0,.1),
               0 2px 0 black;
+}
+.nome-usuario {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #dad6d6;
+  text-align: right;
 }
