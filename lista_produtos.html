@@ -4,13 +4,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Estoque</title>
     <link rel="stylesheet" href="styles.css">
+<style>
+  body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Estilo del botón Volver (esquina superior izquierda) */
+        .volver {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 200px;
+            background-color: #A52A2A;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .volver:hover {
+            background-color: #A52A2A;
+        }
+
+
+</style>
+    
 </head>
   <body>
     <div class="list-section">
             <h2>Lista de Produtos</h2>
             <button onclick="listarProdutos()">Mostrar Produtos</button>
             <div id="listaProdutos"></div>
-      <button onclick="voltar"()">Voltar</button>
+      <button class="volver" onclick="volverPagina()">Voltar</button>
         </div>
+    function volverPagina() {
+            window.history.back();
+        }
   </body>
 </html>
