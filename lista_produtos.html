@@ -45,8 +45,14 @@
             <h2>Lista de Produtos</h2>
             <button onclick="listarProdutos()">Mostrar Produtos</button>
             <div id="listaProdutos"></div>
-      <button class="volver" onclick="volverPagina()">Voltar</button>
+      
         </div>
-   
+    
+    <script>
+      function volverPagina() {
+            window.history.back();
+        }
+    </script>
+   <button class="volver" onclick="volverPagina()">Voltar</button>
   </body>
 </html>
