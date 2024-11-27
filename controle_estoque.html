@@ -18,8 +18,8 @@
             position: relative;
         }
 
-        /* Estilo del botón Volver (esquina superior izquierda) */
-        .volver {
+        
+        .voltar {
             position: absolute;
             top: 20px;
             left: 20px;
@@ -33,7 +33,7 @@
             font-size: 16px;
         }
 
-        .volver:hover {
+        .voltar:hover {
             background-color: #A52A2A;
         }
 
@@ -76,9 +76,9 @@
             <button onclick="buscarProduto()">Buscar</button>
             <div id="resultadoBusca"></div>
         </div>
-    <button class="volver" onclick="volverPagina()">Voltar</button>
+    <button class="voltar" onclick="voltarPagina()">Voltar</button>
 <script>
-    function volverPagina() {
+    function voltarPagina() {
             window.history.back();
         }
 </script>
