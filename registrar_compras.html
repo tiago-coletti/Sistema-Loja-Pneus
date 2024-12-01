@@ -7,36 +7,43 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="dashboard.html" class="voltar-btn">Voltar</a>
     <div class="nome-usuario">Milena</div>
-<div class="form-section">
-    <h2>Registro de Compras</h2>
-    <label for="tipoProduto">Tipo do Produto:</label>
-    <input type="text" id="tipoProduto" placeholder="Óleo"><br>
+    <div class="form-section">
+        <h2>Registro de Compras</h2>
 
-    <label for="marca">Marca:</label>
-    <input type="text" id="marca" placeholder="Goodyear"><br>
+        <form id="formCompras" method="post" action="#">
+            <label for="tipoProduto">Tipo do Produto:</label>
+            <input type="text" id="tipoProduto" placeholder="Óleo" required><br>
 
-    <label for="pagamento">Forma de Pagamento:</label>
-    <input type="text" id="pagamento" placeholder="Cartão Elo"><br>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" placeholder="Goodyear" required><br>
 
-     <label for="quantidade">Quantidade do Produto:</label>
-    <input type="text" id="quantidade" placeholder="5"><br>
+            <label for="pagamento">Forma de Pagamento:</label>
+            <input type="text" id="pagamento" placeholder="Cartão Elo" required><br>
 
-     <label for="notaFiscal">Número da Nota Fiscal:</label>
-    <input type="text" id="notaFiscal" placeholder="0000000001385-AA."><br>
+            <label for="quantidade">Quantidade do Produto:</label>
+            <input type="text" id="quantidade" placeholder="5" required><br>
 
-    <label for="emissao">Data de Emissão:</label>
-    <input type="date" id="emissao" placeholder=""><br>
+            <label for="notaFiscal">Número da Nota Fiscal:</label>
+            <input type="text" id="notaFiscal" placeholder="0000000001385-AA." required><br>
 
-    <label for="precoUnitario">Preço Unitário:</label>
-    <input type="text" id="precoUnitario" placeholder="$"><br>
+            <label for="emissao">Data de Emissão:</label>
+            <input type="date" id="emissao" required><br>
 
-     <label for="valorTotal">Valor Total:</label>
-    <input type="text" id="valorTotal" placeholder="$"><br>
+            <label for="precoUnitario">Preço Unitário:</label>
+            <input type="text" id="precoUnitario" placeholder="$" required><br>
 
-   
-    <button onclick="adicionarCompra()">Registrar Compra</button>
-</div>
-   <script src="scripts/gerenciamento_produtos.js"></script>
+            <label for="valorTotal">Valor Total:</label>
+            <input type="text" id="valorTotal" placeholder="$" required><br>
+
+            <button type="submit">Registrar Compra</button>
+        </form>
+
+        <!-- Mensagem que aparece após o envio -->
+        <div class="mensagem" style="display: none;">
+            <p>Compra registrada com sucesso!</p>
+        </div>
+    </div>
 </body>
 </html>
