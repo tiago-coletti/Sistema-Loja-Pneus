@@ -6,6 +6,11 @@
     <title>Compras</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<script>
+    function confirmarExclusao() {
+        alert("Cliente excluído com sucesso!");
+    }
+</script>
 <body>
     <a href="dashboard.html" class="voltar-btn">Voltar</a>
     <div class="nome-usuario">Milena</div>
@@ -38,9 +43,12 @@
             <input type="text" id="valorTotal" placeholder="$" required><br>
 
             <button type="submit">Registrar Compra</button>
+            <td><a href="vizualizar_cadastro_cpf.html"><button>Visualizar</button></a></td>
+            <td><a href="alteracao_cliente_cpf.html"><button>Editar</button></a></td>
+            <td><button onclick="confirmarExclusao()">Excluir</button></td>
         </form>
-        <a href="consulta_compras.html"><button type="button">Consultar</button></a>
 
+        <!-- Mensagem que aparece após o envio -->
         <div class="mensagem" style="display: none;">
             <p>Compra registrada com sucesso!</p>
         </div>
