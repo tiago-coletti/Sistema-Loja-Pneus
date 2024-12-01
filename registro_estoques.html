@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registo de Estoque</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -12,30 +11,23 @@
         <h1>Controle de Estoque</h1>
         
         <div class="form-section">
-            <h2>Adicionar Produto</h2>
-            
+            <h2>Adicionar Novo Lote de Produto</h2>
+
             <label for="tipoProduto">Tipo do Produto</label>
-            <input type="text" id="tipoProduto" placeholder="Ex.: Pneu" required> <br>
+            <select id="tipoProduto" required>
+                <option value="">Selecione um Produto Cadastrado</option>
+                <option value="Pneu Aro 13">Pneu Aro 13</option>
+                <option value="Pneu Aro 15">Pneu Aro 15</option>
+                <option value="Óleo Motor 20W-50">Óleo Motor 20W-50</option>
+            </select><br>
 
             <label for="quantidade">Quantidade</label>
             <input type="number" id="quantidade" placeholder="Ex.: 2" required min="0"><br>
 
-            <label for="marca">Marca</label>
-            <input type="text" id="marca" placeholder="Ex.:Firestone" required><br>
+            <label for="dataEntrada">Data de Entrada</label>
+            <input type="date" id="dataEntrada" required><br>
 
-            <label for="modelo">Modelo</label>
-            <input type="text" id="modelo" placeholder="Ex.: Pneus off-road" required><br>
-
-            <label for="codigoProduto">Código do Produto</label>
-            <input type="text" id="codigoProduto" placeholder="Ex.: 123" required><br>
-
-            <label for="medida">Medida/Tamanho</label>
-            <input type="text" id="medida" placeholder="Ex.: Pneu Aro 13" required><br>
-
-            <label for="dataCadastro">Data de Cadastro</label>
-            <input type="date" id="dataCadastro" required><br>
-
-            <label for="valor">Valor</label>
+            <label for="valor">Valor Unitário</label>
             <input type="text" id="valor" placeholder="Ex.: R$ 310,00" required><br><br>
             
             <button type="button" onclick="adicionarProduto()">Adicionar Produto</button>
@@ -43,8 +35,7 @@
         <br>
 
         <div class="list-section">
-            <h2>Lista de Produtos</h2>
-            <button onclick="listarProdutos()">Mostrar Produtos</button>
+            <h2>Últimos Registros de Entrada de Produtos</h2>
             <div id="listaProdutos"></div>
         </div>
     </div>
@@ -53,33 +44,84 @@
         function adicionarProduto() {
             const tipoProduto = document.getElementById('tipoProduto').value;
             const quantidade = document.getElementById('quantidade').value;
-            const marca = document.getElementById('marca').value;
-            const modelo = document.getElementById('modelo').value;
-            const codigoProduto = document.getElementById('codigoProduto').value;
-            const medida = document.getElementById('medida').value;
-            const dataCadastro = document.getElementById('dataCadastro').value;
+            const dataEntrada = document.getElementById('dataEntrada').value;
             const valor = document.getElementById('valor').value;
             
-            if (!tipoProduto || !quantidade || !marca || !modelo || !codigoProduto || !medida || !dataCadastro || !valor) {
+            if (!tipoProduto || !quantidade || !dataEntrada || !valor) {
                 alert("Por favor, preencha todos os campos obrigatórios.");
                 return;
             }
 
+            const produto = {
+                tipoProduto,
+                quantidade,
+                dataEntrada,
+                valor
+            };
+
+            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
+            registros.push(produto);
+            localStorage.setItem('estoque', JSON.stringify(registros));
+
             alert("Produto adicionado com sucesso!");
-            
+
             document.getElementById('tipoProduto').value = '';
             document.getElementById('quantidade').value = '';
-            document.getElementById('marca').value = '';
-            document.getElementById('modelo').value = '';
-            document.getElementById('codigoProduto').value = '';
-            document.getElementById('medida').value = '';
-            document.getElementById('dataCadastro').value = '';
+            document.getElementById('dataEntrada').value = '';
             document.getElementById('valor').value = '';
+
+            listarProdutos();
         }
 
         function listarProdutos() {
-            alert("Lista de produtos será mostrada aqui.");
+            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
+            let listaHTML = '<table border="1"><tr><th>Produto</th><th>Quantidade</th><th>Data de Entrada</th><th>Valor Unitário</th><th>Ações</th></tr>';
+
+            registros.forEach((produto, index) => {
+                listaHTML += `
+                    <tr>
+                        <td>${produto.tipoProduto}</td>
+                        <td>${produto.quantidade}</td>
+                        <td>${produto.dataEntrada}</td>
+                        <td>${produto.valor}</td>
+                        <td>
+                            <button onclick="editarProduto(${index})">Editar</button>
+                            <button onclick="excluirProduto(${index})">Excluir</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            listaHTML += '</table>';
+
+            document.getElementById('listaProdutos').innerHTML = listaHTML;
         }
+
+        function editarProduto(index) {
+            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
+            const produto = registros[index];
+
+            document.getElementById('tipoProduto').value = produto.tipoProduto;
+            document.getElementById('quantidade').value = produto.quantidade;
+            document.getElementById('dataEntrada').value = produto.dataEntrada;
+            document.getElementById('valor').value = produto.valor;
+
+            registros.splice(index, 1);
+            localStorage.setItem('estoque', JSON.stringify(registros));
+            listarProdutos();
+        }
+
+        function excluirProduto(index) {
+            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
+            registros.splice(index, 1);
+            localStorage.setItem('estoque', JSON.stringify(registros));
+
+            alert("Produto excluído com sucesso!");
+            listarProdutos();
+        }
+
+        window.onload = listarProdutos;
     </script>
+
 </body>
 </html>
