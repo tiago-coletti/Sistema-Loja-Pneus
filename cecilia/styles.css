@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+.escolher_cadastro {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;  
+}
+.botao-cadastro {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #A52A2A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #A52A2A;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #961f1f;
+}
+
+#listaProdutos, #resultadoBusca {
+    margin-top: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+button {
+  background-color: #961f1f;
+  cursor: pointer;
+}
+.nome-usuario {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.voltar-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #8B0000;
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.voltar-btn:hover {
+  background-color: #A52A2A;
+}

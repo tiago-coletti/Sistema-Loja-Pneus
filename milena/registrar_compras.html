@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .botao-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px; 
+        }
+
+        .botao-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
 </head>
-<script>
-    function confirmarExclusao() {
-        alert("Cliente excluído com sucesso!");
-    }
-</script>
 <body>
-    <a href="dashboard.html" class="voltar-btn">Voltar</a>
+    <a href="C:\Users\opour\Documents\GitHub\Sistema-Borracharia\dashboard.html" class="voltar-btn">Voltar</a>
     <div class="nome-usuario">Milena</div>
     <div class="form-section">
         <h2>Registro de Compras</h2>
@@ -42,13 +49,12 @@
             <label for="valorTotal">Valor Total:</label>
             <input type="text" id="valorTotal" placeholder="$" required><br>
 
-            <button type="submit">Registrar Compra</button>
-            <td><a href="vizualizar_cadastro_cpf.html"><button>Visualizar</button></a></td>
-            <td><a href="alteracao_cliente_cpf.html"><button>Editar</button></a></td>
-            <td><button onclick="confirmarExclusao()">Excluir</button></td>
+            <div class="botao-container">
+                <button type="submit">Registrar Compra</button>
+                <a href="consulta_compras.html"><button type="button">Consultar</button></a>
+            </div>
         </form>
 
-        <!-- Mensagem que aparece após o envio -->
         <div class="mensagem" style="display: none;">
             <p>Compra registrada com sucesso!</p>
         </div>

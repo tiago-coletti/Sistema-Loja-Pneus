@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alteração de Compra</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<div class="nome-usuario">Milena</div>
+
+<h2>Alteração dos dados cadastrados para Compra</h2>
+
+<div>
+    <form action="consulta_compras.html" method="get">
+        <label for="tipoProduto">Tipo do Produto:</label>
+        <input type="text" id="tipoProduto" name="tipoProduto" value="Óleo" placeholder="Óleo" required><br>
+
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca" value="Goodyear" placeholder="Goodyear" required><br>
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" value="5" placeholder="5" required><br>
+
+        <label for="precoUnitario">Preço Unitário:</label>
+        <input type="text" id="precoUnitario" name="precoUnitario" value="20.00" placeholder="R$ 20,00" required><br>
+
+        <label for="valorTotal">Valor Total:</label>
+        <input type="text" id="valorTotal" name="valorTotal" value="100.00" placeholder="R$ 100,00" required><br>
+
+        <label for="notaFiscal">Número da Nota Fiscal:</label>
+        <input type="text" id="notaFiscal" name="notaFiscal" value="0000000001385-AA" placeholder="0000000001385-AA" required><br>
+
+        <label for="emissao">Data de Emissão:</label>
+        <input type="date" id="emissao" name="emissao" value="2024-12-01" required><br>
+
+        <label for="pagamento">Forma de Pagamento:</label>
+        <input type="text" id="pagamento" name="pagamento" value="Cartão Elo" placeholder="Cartão Elo" required><br>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</div>
+
+</body>
+</html>
