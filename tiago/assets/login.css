@@ -11,10 +11,11 @@ body {
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
     flex-direction: column;
     color: #333;
+    padding: 20px;
 }
 
 /* Estilos para o título da página */
@@ -26,11 +27,15 @@ h2 {
 /* Container que envolve o formulário */
 .container {
     background-color: #fff;
-    padding: 30px; 
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px; 
+    width: 100%;
+    max-width: 500px;  /* Limitar a largura */
+    margin: 0 auto; /* Centralizar o container */
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos para o formulário */
@@ -43,24 +48,27 @@ form {
 input[type="text"], 
 input[type="password"], 
 select {
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
 }
+
+/* Botão "Criar Login" */
 button {
-    background-color: #8B0000; 
+    background-color: #8B0000;
     color: #fff;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 button:hover {
-    background-color: #A52A2A; 
+    background-color: #A52A2A;
 }
 
 /* Botão de "Voltar" no canto superior esquerdo */
@@ -70,11 +78,13 @@ button:hover {
     left: 20px;
     background-color: #8B0000;
     color: #fff;
-    padding: 10px;
+    padding: 10px 15px;
     text-decoration: none;
     border-radius: 4px;
     font-size: 14px;
+    transition: background-color 0.3s ease;
 }
+
 .voltar-btn:hover {
     background-color: #A52A2A;
 }
@@ -83,58 +93,116 @@ button:hover {
 #consult-logins {
     background-color: #8B0000;
     color: #fff;
-    padding: 10px;
+    padding: 12px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
+    width: 100%;
     transition: background-color 0.3s ease;
 }
+
 #consult-logins:hover {
     background-color: #A52A2A;
 }
 
-/* Estilo para o botão de excluir */
-.delete-btn {
-    background-color: #B22222; 
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-}
-.delete-btn:hover {
-    background-color: #FF4500; 
-}
-
 /* Estilo para a lista de logins criados */
 .logins-list {
-    margin-top: 20px;
-    padding: 20px; 
+    margin-top: 30px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px; 
+    width: 100%;
+    max-width: 500px;
     display: none;
 }
+
 .logins-list h3 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
+
 .logins-list ul {
     list-style-type: none;
     padding-left: 0;
 }
+
 .logins-list li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: flex;
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
 }
+
 .logins-list li button {
-    margin-left: 10px; 
+    margin-left: 10px;
+}
+
+/* Estilo para o formulário de edição */
+#edit-login-container {
+    display: none;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+#edit-login-container h3 {
+    margin-bottom: 20px;
+}
+
+#edit-login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+#edit-login-container input[type="text"], 
+#edit-login-container input[type="password"], 
+#edit-login-container select {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#edit-login-container button {
+    background-color: #8B0000;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#edit-login-container button:hover {
+    background-color: #A52A2A;
+}
+
+/* Botão Cancelar */
+#cancel-edit {
+    background-color: #B22222;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#cancel-edit:hover {
+    background-color: #FF4500;
 }
 
 /* Nome no canto superior direito */

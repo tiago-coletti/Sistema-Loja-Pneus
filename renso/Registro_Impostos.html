@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Impostos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            color: #333;
+        }
+
+        /* Botón "Volver" */
+        .volver {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 200px; /* Máximo ancho del botón */
+            background-color: #A52A2A;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .volver:hover {
+            background-color: #A52A2A;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            width: 200px;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 70px; /* Ajuste para evitar que el botón se superponga */
+        }
+
+        .sidebar button {
+            width: 100%;
+            background-color: #A52A2A;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .sidebar button:hover {
+            background-color: #A52A2A;
+        }
+
+        /* Contenedor principal */
+        .container {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        /* Estilo del encabezado */
+        h1 {
+            text-align: center;
+            color: #A52A2A;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo de las etiquetas */
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        /* Estilo de los campos de entrada */
+        input[type="text"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Estilo del botón principal */
+        button {
+            width: 100%;
+            background-color: #A52A2A;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #A52A2A;
+        }
+
+        /* Estilo para mostrar los datos ingresados */
+        .content-display {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+        .nome-usuario {
+            position: absolute;
+            top: 20px;
+         right: 20px;
+            font-size: 16px;
+            font-weight: bold;
+         color: #333;
+}
+    </style>
+</head>
+<body>
+    <div class="nome-usuario">Renso</div>
+    <!-- Botón Volver -->
+    <button class="volver" onclick="volverPagina()">Voltar</button>
+
+    <!-- Barra lateral con los botones de consulta, edición y eliminación -->
+    <div class="sidebar">
+        <button onclick="mostrarContenido('consultar')">Consultar Impostos</button>
+        <button onclick="mostrarContenido('editar')">Editar Impostos</button>
+        <button onclick="mostrarContenido('excluir')">Excluir Impostos</button>
+    </div>
+
+    <!-- Contenedor principal para el formulario de registro -->
+    <div class="container">
+        <h1>Registro de Impostos</h1>
+
+        <form id="registroImpuestosForm">
+            <label for="tipoImpuesto">Tipo de Imposto</label>
+            <input type="text" id="tipoImpuesto" name="tipoImposto" placeholder="Ex. Tributos federais, Contribuições Previdenciárias..." required>
+
+            <label for="fechaVencimiento">Data de Vencimento</label>
+            <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
+
+            <label for="valorPagar">Valor a Pagar</label>
+            <input type="number" id="valorPagar" name="valorPagar" placeholder="Insere o valor em R$" required>
+
+            <button type="submit">Registrar Imposto</button>
+        </form>
+
+        <!-- Área para mostrar contenido según la opción seleccionada -->
+        <div id="contentDisplay" class="content-display" style="display:none;"></div>
+    </div>
+
+    <script>
+        // Función para navegar a la página anterior
+        function volverPagina() {
+            // Aquí va el enlace que lleva a la página anterior
+            window.location.href = "dashboard.html";
+        }
+
+        // Función para mostrar contenido
+        function mostrarContenido(opcion) {
+            const contentDisplay = document.getElementById('contentDisplay');
+            contentDisplay.style.display = 'block';
+            contentDisplay.innerHTML = `<strong>Opción seleccionada:</strong> ${opcion}`;
+        }
+    </script>
+
+</body>
+</html>
