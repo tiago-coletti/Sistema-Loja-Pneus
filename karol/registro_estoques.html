@@ -1,128 +1,70 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+ <!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registo de Estoque</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Consulta de Fornecedores</title>
 </head>
 <body>
-    <div class="container">
-        <div class="nome-usuario">Karol</div>
-        <h1>Controle de Estoque</h1>
-        
-        <div class="form-section">
-            <h2>Adicionar Novo Lote de Produto</h2>
+  <div class="nome-usuario">Cecilia</div>
+<h2>Consulta de Fornecedores</h2>
 
-            <label for="tipoProduto">Tipo do Produto</label>
-            <select id="tipoProduto" required>
-                <option value="">Selecione um Produto Cadastrado</option>
-                <option value="Pneu Aro 13">Pneu Aro 13</option>
-                <option value="Pneu Aro 15">Pneu Aro 15</option>
-                <option value="Óleo Motor 20W-50">Óleo Motor 20W-50</option>
-            </select><br>
+<div>
+  <form id="formConsulta">
+    <label for="nome">Razão Social</label>
+    <input type="text" id="nome" name="razao_social" placeholder="Loja de Roupas ABC Ltda" readonly><br>
 
-            <label for="quantidade">Quantidade</label>
-            <input type="number" id="quantidade" placeholder="Ex.: 2" required min="0"><br>
+    <label for="cnpj">CNPJ</label>
+    <input type="text" id="cnpj" name="cnpj" placeholder="66.674.635/2425-55" readonly><br>
+    
+    <label for="telefone">Número de Telefone:</label><br>
+    <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" readonly><br>
+    
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco" name="endereco" placeholder="Rua Caroline, Número 87 E, Bairro Paraíso" readonly><br>
+    
+    <label for="cep">CEP:</label>
+    <input type="text" id="cep" name="cep" placeholder="01010-010" readonly><br><br>
 
-            <label for="dataEntrada">Data de Entrada</label>
-            <input type="date" id="dataEntrada" required><br>
+    <button type="button" id="atualizar">Atualizar</button><br>
+    <button type="button" id="excluir">Excluir</button><br>
+    <a href="cadastro_fornecedor.html"><button type="button">Voltar</button></a>
+  </form>
+</div>
 
-            <label for="valor">Valor Unitário</label>
-            <input type="text" id="valor" placeholder="Ex.: R$ 310,00" required><br><br>
-            
-            <button type="button" onclick="adicionarProduto()">Adicionar Produto</button>
-        </div>
-        <br>
+<script>
+  // Variável para armazenar os dados simulados
+  let dadosCadastrados = JSON.parse(localStorage.getItem("dadosFornecedor"));
 
-        <div class="list-section">
-            <h2>Últimos Registros de Entrada de Produtos</h2>
-            <div id="listaProdutos"></div>
-        </div>
-    </div>
+  // Verifica se há dados salvos e preenche os campos do formulário
+  if (dadosCadastrados) {
+    document.getElementById('nome').value = dadosCadastrados.razaoSocial;
+    document.getElementById('cnpj').value = dadosCadastrados.cnpj;
+    document.getElementById('telefone').value = dadosCadastrados.telefone;
+    document.getElementById('endereco').value = dadosCadastrados.endereco;
+    document.getElementById('cep').value = dadosCadastrados.cep;
+  } else {
+    alert("Nenhum fornecedor cadastrado.");
+  }
 
-    <script>
-        function adicionarProduto() {
-            const tipoProduto = document.getElementById('tipoProduto').value;
-            const quantidade = document.getElementById('quantidade').value;
-            const dataEntrada = document.getElementById('dataEntrada').value;
-            const valor = document.getElementById('valor').value;
-            
-            if (!tipoProduto || !quantidade || !dataEntrada || !valor) {
-                alert("Por favor, preencha todos os campos obrigatórios.");
-                return;
-            }
+  // Função para atualizar os dados
+  document.getElementById('atualizar').addEventListener('click', function() {
+    if (dadosCadastrados) {
+      alert("Atualize os dados no formulário.");
+    } else {
+      alert("Não há dados para atualizar.");
+    }
+  });
 
-            const produto = {
-                tipoProduto,
-                quantidade,
-                dataEntrada,
-                valor
-            };
-
-            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
-            registros.push(produto);
-            localStorage.setItem('estoque', JSON.stringify(registros));
-
-            alert("Produto adicionado com sucesso!");
-
-            document.getElementById('tipoProduto').value = '';
-            document.getElementById('quantidade').value = '';
-            document.getElementById('dataEntrada').value = '';
-            document.getElementById('valor').value = '';
-
-            listarProdutos();
-        }
-
-        function listarProdutos() {
-            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
-            let listaHTML = '<table border="1"><tr><th>Produto</th><th>Quantidade</th><th>Data de Entrada</th><th>Valor Unitário</th><th>Ações</th></tr>';
-
-            registros.forEach((produto, index) => {
-                listaHTML += `
-                    <tr>
-                        <td>${produto.tipoProduto}</td>
-                        <td>${produto.quantidade}</td>
-                        <td>${produto.dataEntrada}</td>
-                        <td>${produto.valor}</td>
-                        <td>
-                            <button onclick="editarProduto(${index})">Editar</button>
-                            <button onclick="excluirProduto(${index})">Excluir</button>
-                        </td>
-                    </tr>
-                `;
-            });
-
-            listaHTML += '</table>';
-
-            document.getElementById('listaProdutos').innerHTML = listaHTML;
-        }
-
-        function editarProduto(index) {
-            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
-            const produto = registros[index];
-
-            document.getElementById('tipoProduto').value = produto.tipoProduto;
-            document.getElementById('quantidade').value = produto.quantidade;
-            document.getElementById('dataEntrada').value = produto.dataEntrada;
-            document.getElementById('valor').value = produto.valor;
-
-            registros.splice(index, 1);
-            localStorage.setItem('estoque', JSON.stringify(registros));
-            listarProdutos();
-        }
-
-        function excluirProduto(index) {
-            let registros = JSON.parse(localStorage.getItem('estoque')) || [];
-            registros.splice(index, 1);
-            localStorage.setItem('estoque', JSON.stringify(registros));
-
-            alert("Produto excluído com sucesso!");
-            listarProdutos();
-        }
-
-        window.onload = listarProdutos;
-    </script>
+  // Função para excluir os dados
+  document.getElementById('excluir').addEventListener('click', function() {
+    if (confirm("Tem certeza de que deseja excluir os dados?")) {
+      localStorage.removeItem("dadosFornecedor"); // Exclui os dados armazenados
+      alert("Dados excluídos com sucesso.");
+      location.reload();
+    }
+  });
+</script>
 
 </body>
 </html>
