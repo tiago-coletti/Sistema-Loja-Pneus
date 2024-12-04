@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Consulta de Fornecedores</title>
 </head>
 <body>
-  <div class="nome-usuario">Karol</div>
+  <div class="nome-usuario">Cecilia</div>
 <h2>Consulta de Fornecedores</h2>
 
 <div>
@@ -27,45 +26,38 @@
     <label for="cep">CEP:</label>
     <input type="text" id="cep" name="cep" placeholder="01010-010" readonly><br><br>
 
-    <button type="button" id="atualizar">Atualizar</button><br>
     <button type="button" id="excluir">Excluir</button><br>
-    <a href="cadastrar_fornecedores.html"><button type="button">Voltar</button></a>
+    <a href="cadastro_fornecedor.html"><button type="button">Voltar</button></a>
   </form>
 </div>
 
 <script>
-  // Variável para armazenar os dados simulados
+
   let dadosCadastrados = JSON.parse(localStorage.getItem("dadosFornecedor"));
 
-  // Verifica se há dados salvos e preenche os campos do formulário
+  
   if (dadosCadastrados) {
+
     document.getElementById('nome').value = dadosCadastrados.razaoSocial;
     document.getElementById('cnpj').value = dadosCadastrados.cnpj;
     document.getElementById('telefone').value = dadosCadastrados.telefone;
     document.getElementById('endereco').value = dadosCadastrados.endereco;
     document.getElementById('cep').value = dadosCadastrados.cep;
   } else {
-    alert("Nenhum fornecedor cadastrado.");
+  
+    alert("Nenhum fornecedor cadastrado. Por favor, faça um cadastro primeiro.");
   }
 
-  // Função para atualizar os dados
-  document.getElementById('atualizar').addEventListener('click', function() {
-    if (dadosCadastrados) {
-      alert("Atualize os dados no formulário.");
-    } else {
-      alert("Não há dados para atualizar.");
-    }
-  });
-
-  // Função para excluir os dados
   document.getElementById('excluir').addEventListener('click', function() {
     if (confirm("Tem certeza de que deseja excluir os dados?")) {
-      localStorage.removeItem("dadosFornecedor"); // Exclui os dados armazenados
+      localStorage.removeItem("dadosFornecedor"); 
       alert("Dados excluídos com sucesso.");
-      location.reload();
+      location.reload(); 
     }
   });
 </script>
 
 </body>
 </html>
+
+
