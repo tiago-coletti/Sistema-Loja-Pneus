@@ -26,38 +26,37 @@
     <label for="cep">CEP:</label>
     <input type="text" id="cep" name="cep" placeholder="01010-010" readonly><br><br>
 
-    <button type="button" id="excluir">Excluir</button><br>
-    <a href="cadastro_fornecedor.html"><button type="button">Voltar</button></a>
+    <button type="button" id="excluir">Excluir</button><br><br>
+    <a href="cadastro_fornecedor.html" id="voltar" style="text-decoration: none;">
+      <button type="button">Voltar</button>
+    </a>
   </form>
 </div>
 
 <script>
-
   let dadosCadastrados = JSON.parse(localStorage.getItem("dadosFornecedor"));
 
-  
   if (dadosCadastrados) {
-
     document.getElementById('nome').value = dadosCadastrados.razaoSocial;
     document.getElementById('cnpj').value = dadosCadastrados.cnpj;
     document.getElementById('telefone').value = dadosCadastrados.telefone;
     document.getElementById('endereco').value = dadosCadastrados.endereco;
     document.getElementById('cep').value = dadosCadastrados.cep;
   } else {
-  
     alert("Nenhum fornecedor cadastrado. Por favor, faça um cadastro primeiro.");
   }
 
   document.getElementById('excluir').addEventListener('click', function() {
     if (confirm("Tem certeza de que deseja excluir os dados?")) {
-      localStorage.removeItem("dadosFornecedor"); 
+      localStorage.removeItem("dadosFornecedor");
       alert("Dados excluídos com sucesso.");
-      location.reload(); 
+      location.reload();
     }
   });
 </script>
 
 </body>
 </html>
+
 
 
