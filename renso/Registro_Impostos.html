@@ -15,7 +15,6 @@
             color: #333;
         }
 
-        /* Botón "Volver" */
         .volver {
             position: absolute;
             top: 20px;
@@ -34,7 +33,6 @@
             background-color: #A52A2A;
         }
 
-        /* Barra lateral */
         .sidebar {
             width: 200px;
             background-color: #ffffff;
@@ -42,7 +40,7 @@
             margin-right: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 70px; /* Ajuste para evitar que el botón se superponga */
+            margin-top: 70px;
         }
 
         .sidebar button {
@@ -58,10 +56,9 @@
         }
 
         .sidebar button:hover {
-            background-color: #A52A2A;
+            background-color: #8B0000;
         }
 
-        /* Contenedor principal */
         .container {
             flex: 1;
             background-color: #fff;
@@ -71,14 +68,12 @@
             max-width: 600px;
         }
 
-        /* Estilo del encabezado */
         h1 {
             text-align: center;
             color: #A52A2A;
             margin-bottom: 20px;
         }
 
-        /* Estilo de las etiquetas */
         label {
             font-size: 16px;
             margin-bottom: 5px;
@@ -86,7 +81,6 @@
             color: #555;
         }
 
-        /* Estilo de los campos de entrada */
         input[type="text"], input[type="date"], input[type="number"] {
             width: 100%;
             padding: 10px;
@@ -97,7 +91,6 @@
             font-size: 16px;
         }
 
-        /* Estilo del botón principal */
         button {
             width: 100%;
             background-color: #A52A2A;
@@ -110,76 +103,141 @@
         }
 
         button:hover {
-            background-color: #A52A2A;
+            background-color: #8B0000;
         }
 
-        /* Estilo para mostrar los datos ingresados */
         .content-display {
             margin-top: 20px;
             padding: 15px;
             background-color: #f2f2f2;
             border-radius: 4px;
-            font-size: 18px;
-            color: #333;
-            text-align: center;
-        }
-        .nome-usuario {
-            position: absolute;
-            top: 20px;
-         right: 20px;
             font-size: 16px;
-            font-weight: bold;
-         color: #333;
-}
+            color: #333;
+        }
+
+        .impuesto-item {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
-    <div class="nome-usuario">Renso</div>
-    <!-- Botón Volver -->
     <button class="volver" onclick="volverPagina()">Voltar</button>
 
-    <!-- Barra lateral con los botones de consulta, edición y eliminación -->
     <div class="sidebar">
-        <button onclick="mostrarContenido('consultar')">Consultar Impostos</button>
-        <button onclick="mostrarContenido('editar')">Editar Impostos</button>
-        <button onclick="mostrarContenido('excluir')">Excluir Impostos</button>
+        <button onclick="consultarImpuestos()">Consultar Impostos</button>
+        <button onclick="editarImpuestos()">Editar Impostos</button>
+        <button onclick="eliminarImpuestos()">Excluir Impostos</button>
     </div>
 
-    <!-- Contenedor principal para el formulario de registro -->
     <div class="container">
         <h1>Registro de Impostos</h1>
-
-        <form id="registroImpuestosForm">
+        <form id="registroImpuestosForm" onsubmit="registrarImpuesto(event)">
             <label for="tipoImpuesto">Tipo de Imposto</label>
-            <input type="text" id="tipoImpuesto" name="tipoImposto" placeholder="Ex. Tributos federais, Contribuições Previdenciárias..." required>
+            <input type="text" id="tipoImpuesto" name="tipoImposto" required>
 
             <label for="fechaVencimiento">Data de Vencimento</label>
             <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
 
             <label for="valorPagar">Valor a Pagar</label>
-            <input type="number" id="valorPagar" name="valorPagar" placeholder="Insere o valor em R$" required>
+            <input type="number" id="valorPagar" name="valorPagar" required>
 
             <button type="submit">Registrar Imposto</button>
         </form>
 
-        <!-- Área para mostrar contenido según la opción seleccionada -->
-        <div id="contentDisplay" class="content-display" style="display:none;"></div>
+        <div id="contentDisplay" class="content-display" style="display: none;"></div>
     </div>
 
     <script>
-        // Función para navegar a la página anterior
+        let impuestos = [];
+
         function volverPagina() {
-            // Aquí va el enlace que lleva a la página anterior
-            window.location.href = "../dashboard.html";
+            window.location.href = "aqui_va_el_enlace.html";
         }
 
-        // Función para mostrar contenido
-        function mostrarContenido(opcion) {
+        function registrarImpuesto(event) {
+            event.preventDefault();
+            const tipo = document.getElementById('tipoImpuesto').value;
+            const fecha = document.getElementById('fechaVencimiento').value;
+            const valor = document.getElementById('valorPagar').value;
+
+            impuestos.push({ tipo, fecha, valor });
+            alert('Impuesto registrado con éxito!');
+            document.getElementById('registroImpuestosForm').reset();
+        }
+
+        function consultarImpuestos() {
             const contentDisplay = document.getElementById('contentDisplay');
             contentDisplay.style.display = 'block';
-            contentDisplay.innerHTML = `<strong>Opción seleccionada:</strong> ${opcion}`;
+            contentDisplay.innerHTML = '<h3>Impuestos Registrados</h3>';
+            if (impuestos.length === 0) {
+                contentDisplay.innerHTML += '<p>No hay impuestos registrados.</p>';
+            } else {
+                impuestos.forEach((impuesto, index) => {
+                    contentDisplay.innerHTML += `
+                        <div class="impuesto-item">
+                            <span>${index + 1}. ${impuesto.tipo} - ${impuesto.fecha} - R$${impuesto.valor}</span>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function editarImpuestos() {
+            const contentDisplay = document.getElementById('contentDisplay');
+            contentDisplay.style.display = 'block';
+            contentDisplay.innerHTML = '<h3>Editar Impuestos</h3>';
+            if (impuestos.length === 0) {
+                contentDisplay.innerHTML += '<p>No hay impuestos para editar.</p>';
+            } else {
+                impuestos.forEach((impuesto, index) => {
+                    contentDisplay.innerHTML += `
+                        <div class="impuesto-item">
+                            <span>${index + 1}. ${impuesto.tipo} - ${impuesto.fecha} - R$${impuesto.valor}</span>
+                            <button onclick="editarImpuesto(${index})">Editar</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function editarImpuesto(index) {
+            const nuevoTipo = prompt('Nuevo tipo de impuesto:', impuestos[index].tipo);
+            const nuevaFecha = prompt('Nueva fecha de vencimiento:', impuestos[index].fecha);
+            const nuevoValor = prompt('Nuevo valor a pagar:', impuestos[index].valor);
+
+            if (nuevoTipo && nuevaFecha && nuevoValor) {
+                impuestos[index] = { tipo: nuevoTipo, fecha: nuevaFecha, valor: nuevoValor };
+                alert('Impuesto editado con éxito!');
+                consultarImpuestos();
+            }
+        }
+
+        function eliminarImpuestos() {
+            const contentDisplay = document.getElementById('contentDisplay');
+            contentDisplay.style.display = 'block';
+            contentDisplay.innerHTML = '<h3>Excluir Impuestos</h3>';
+            if (impuestos.length === 0) {
+                contentDisplay.innerHTML += '<p>No hay impuestos para eliminar.</p>';
+            } else {
+                impuestos.forEach((impuesto, index) => {
+                    contentDisplay.innerHTML += `
+                        <div class="impuesto-item">
+                            <span>${index + 1}. ${impuesto.tipo} - ${impuesto.fecha} - R$${impuesto.valor}</span>
+                            <button onclick="eliminarImpuesto(${index})">Excluir</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function eliminarImpuesto(index) {
+            impuestos.splice(index, 1);
+            alert('Impuesto eliminado con éxito!');
+            eliminarImpuestos();
         }
     </script>
-
 </body>
 </html>
