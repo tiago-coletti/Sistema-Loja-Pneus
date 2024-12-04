@@ -49,7 +49,6 @@
       dadosCadastrados = { razaoSocial, cnpj, telefone, endereco, cep };
       localStorage.setItem("dadosFornecedor", JSON.stringify(dadosCadastrados)); 
       alert("Cadastro realizado com sucesso!");
-      document.getElementById('formCadastro').reset(); 
     } else {
       alert("Preencha todos os campos!");
     }
@@ -57,7 +56,6 @@
 
   document.getElementById('atualizar').addEventListener('click', function() {
     if (dadosCadastrados) {
-      
       document.getElementById('nome').value = dadosCadastrados.razaoSocial;
       document.getElementById('cnpj').value = dadosCadastrados.cnpj;
       document.getElementById('telefone').value = dadosCadastrados.telefone;
