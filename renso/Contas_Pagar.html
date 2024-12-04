@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Contas a Pagar</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            color: #333;
+        }
+
+        .volver {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 200px; /* Máximo ancho del botón */
+            background-color: #A52A2A;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .volver:hover {
+            background-color: #A52A2A;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #ffffff;
+            padding: 15px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 70px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            background-color: #A52A2A;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .sidebar button:hover {
+            background-color: #8B0000;
+        }
+
+        .container {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #A52A2A;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #555;
+        }
+
+        select, input[type="text"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #A52A2A;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #8B0000;
+        }
+
+        .content-display {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .conta-item {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .conta-actions button {
+            margin-left: 10px;
+            background-color: #0066cc;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .conta-actions button.excluir {
+            background-color: #cc0000;
+        }
+
+        .conta-actions button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <button class="volver" onclick="voltarPagina()">Voltar</button>
+
+    <div class="sidebar">
+        <button onclick="consultarContas()">Consultar Contas</button>
+    </div>
+
+    <div class="container">
+        <h1>Registro de Contas a Pagar</h1>
+        <form id="registroContasForm" onsubmit="registrarConta(event)">
+            <label for="tipoConta">Tipo de Conta</label>
+            <select id="tipoConta" name="tipoConta" required>
+                <option value="">Selecione</option>
+                <option value="Água">Água</option>
+                <option value="Luz">Luz</option>
+                <option value="Telefone">Telefone</option>
+                <option value="Fornecedores">Fornecedores</option>
+                <option value="Internet">Internet</option>
+            </select>
+
+            <label for="descricao">Descrição</label>
+            <input type="text" id="descricao" name="descricao" required>
+
+            <label for="dataVencimento">Data de Vencimento</label>
+            <input type="date" id="dataVencimento" name="dataVencimento" required>
+
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" name="valor" required>
+
+            <button type="submit">Registrar Conta</button>
+        </form>
+
+        <div id="contentDisplay" class="content-display" style="display: none;"></div>
+    </div>
+
+    <script>
+        let contas = [];
+
+        function voltarPagina() {
+            window.location.href = "index.html";
+        }
+
+        function registrarConta(event) {
+            event.preventDefault();
+            const tipo = document.getElementById('tipoConta').value;
+            const descricao = document.getElementById('descricao').value;
+            const data = document.getElementById('dataVencimento').value;
+            const valor = document.getElementById('valor').value;
+
+            contas.push({ tipo, descricao, data, valor });
+            alert('Conta registrada com sucesso!');
+            document.getElementById('registroContasForm').reset();
+        }
+
+        function consultarContas() {
+            const contentDisplay = document.getElementById('contentDisplay');
+            contentDisplay.style.display = 'block';
+            contentDisplay.innerHTML = '<h3>Contas Registradas</h3>';
+            if (contas.length === 0) {
+                contentDisplay.innerHTML += '<p>Não há contas registradas.</p>';
+            } else {
+                contas.forEach((conta, index) => {
+                    contentDisplay.innerHTML += `
+                        <div class="conta-item">
+                            <span>${index + 1}. ${conta.tipo} - ${conta.descricao} - ${conta.data} - R$${conta.valor}</span>
+                            <div class="conta-actions">
+                                <button onclick="editarConta(${index})">Editar</button>
+                                <button class="excluir" onclick="excluirConta(${index})">Excluir</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function editarConta(index) {
+            const novaDescricao = prompt('Nova descrição:', contas[index].descricao);
+            const novaData = prompt('Nova data de vencimento:', contas[index].data);
+            const novoValor = prompt('Novo valor:', contas[index].valor);
+
+            if (novaDescricao && novaData && novoValor) {
+                contas[index].descricao = novaDescricao;
+                contas[index].data = novaData;
+                contas[index].valor = novoValor;
+                alert('Conta editada com sucesso!');
+                consultarContas();
+            }
+        }
+
+        function excluirConta(index) {
+            if (confirm('Tem certeza que deseja excluir esta conta?')) {
+                contas.splice(index, 1);
+                alert('Conta excluída com sucesso!');
+                consultarContas();
+            }
+        }
+    </script>
+</body>
+</html>
+
